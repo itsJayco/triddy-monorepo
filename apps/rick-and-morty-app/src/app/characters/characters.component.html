@@ -11,6 +11,7 @@
     <button (click)="toggleFavorite(character)">
       {{ isFavorite(character) ? 'Unfavorite' : 'Favorite' }}
     </button>
+    <a [routerLink]="['/characters', character.id]">View Details</a>
   </div>
   <button (click)="prevPage()" [disabled]="page === 1">Previous</button>
   <button (click)="nextPage()" [disabled]="page === totalPages">Next</button>
