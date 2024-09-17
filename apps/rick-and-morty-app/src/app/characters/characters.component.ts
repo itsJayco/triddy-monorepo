@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Character, RickAndMortyService } from '../rick-and-morty.service';
+import { RickAndMortyService, Character } from '../rick-and-morty.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.scss'],
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule]
 })
 export class CharactersComponent implements OnInit {
   characters: Character[] = [];
@@ -39,7 +39,7 @@ export class CharactersComponent implements OnInit {
       error: (err) => {
         console.error('Error fetching characters', err);
         this.loading = false;
-      },
+      }
     });
   }
 
@@ -58,7 +58,7 @@ export class CharactersComponent implements OnInit {
   }
 
   filterCharacters(): void {
-    this.filteredCharacters = this.characters.filter((character) =>
+    this.filteredCharacters = this.characters.filter(character =>
       character.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
@@ -77,10 +77,7 @@ export class CharactersComponent implements OnInit {
   }
 
   saveFavorites(): void {
-    localStorage.setItem(
-      'favorites',
-      JSON.stringify(Array.from(this.favorites))
-    );
+    localStorage.setItem('favorites', JSON.stringify(Array.from(this.favorites)));
   }
 
   loadFavorites(): void {

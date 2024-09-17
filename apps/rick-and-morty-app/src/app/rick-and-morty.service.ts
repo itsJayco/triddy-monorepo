@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Character {
@@ -41,8 +41,13 @@ export class RickAndMortyService {
 
   constructor(private http: HttpClient) {}
 
-  getCharacters(page = 1): Observable<ApiResponse> {
-    const params = new HttpParams().set('page', page.toString());
-    return this.http.get<ApiResponse>(this.apiUrl, { params });
+  // Método para obtener todos los personajes
+  getCharacters(page: number = 1): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(`${this.apiUrl}?page=${page}`);
+  }
+
+  // Método para obtener un personaje por ID
+  getCharacterById(id: number): Observable<Character> {
+    return this.http.get<Character>(`${this.apiUrl}/${id}`);
   }
 }
