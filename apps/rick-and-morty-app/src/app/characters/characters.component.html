@@ -1,10 +1,18 @@
-<div *ngIf="loading">Loading...</div>
-<div *ngIf="!loading">
-    <div *ngFor="let character of characters">
-        <h3>{{ character.name }}</h3>
-        <img [src]="character.image" [alt]="character.name" width="100">
-        <p>Species: {{ character.species }}</p>
+<div>
+    <input [(ngModel)]="searchTerm" (input)="filterCharacters()" placeholder="Search by name">
+  </div>
+  
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="!loading">
+    <div *ngFor="let character of filteredCharacters">
+      <h3>{{ character.name }}</h3>
+      <img [src]="character.image" [alt]="character.name" width="100">
+      <p>Species: {{ character.species }}</p>
+      <button (click)="toggleFavorite(character)">
+        {{ isFavorite(character) ? 'Unfavorite' : 'Favorite' }}
+      </button>
     </div>
     <button (click)="prevPage()" [disabled]="page === 1">Previous</button>
     <button (click)="nextPage()" [disabled]="page === totalPages">Next</button>
-</div>
+  </div>
+  

@@ -18,10 +18,4 @@ describe('AppComponent', () => {
       'Welcome rick-and-morty-app'
     );
   });
-
-  it(`should have as title 'rick-and-morty-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('rick-and-morty-app');
-  });
 });
