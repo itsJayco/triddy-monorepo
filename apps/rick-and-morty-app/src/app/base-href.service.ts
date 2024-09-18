@@ -8,23 +8,32 @@ export class BaseHrefService {
   constructor(@Inject(DOCUMENT) private document: Document) {}
 
   setBaseHref(): void {
-    console.log('BaseHrefService: setBaseHref called');
     const baseElement = this.document.querySelector('base');
     if (baseElement) {
       const baseHref = this.calculateBaseHref();
       baseElement.setAttribute('href', baseHref);
-      console.log('Base href set to:', baseHref);
+      console.log('Base href set to:', baseHref); // For debugging
     }
   }
 
   calculateBaseHref(): string {
     const currentOrigin = window.location.origin;
-    const expectedOrigin = 'https://itsjayco.github.io';
 
+    // Check for local environment
+    const isLocalhost =
+      currentOrigin.includes('localhost') ||
+      currentOrigin.includes('127.0.0.1');
+
+    if (isLocalhost) {
+      return '/'; // Change this to your local base path if needed
+    }
+
+    // Check if the current origin matches the GitHub Pages URL
+    const expectedOrigin = 'https://itsjayco.github.io';
     if (currentOrigin === expectedOrigin) {
       return '/triddy-monorepo/';
     }
 
-    return '/';
+    return '/'; // Default base href for other origins
   }
 }
