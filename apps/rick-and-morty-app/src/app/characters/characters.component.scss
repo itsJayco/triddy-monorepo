@@ -7,6 +7,68 @@ $border-color: #e9ecef;
 $card-border-radius: 8px;
 $card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
+.loader-mask {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 55vh;
+}
+.loader {
+  width: 100px;
+  height: 100px;
+  animation: loader 2s linear infinite;
+}
+@keyframes loader {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: absolute;
+}
+.red {
+  background: #829c4b;
+  box-shadow: 0 0 20px 2px #829c4b;
+  top: 10px;
+  left: calc(50% - 15px);
+  animation: #829c4b 4s infinite;
+}
+@keyframes red {
+  50% {
+    top: 30px;
+  }
+}
+.green {
+  background: #e0e59b;
+  box-shadow: 0 0 20px 2px #e0e59b;
+  bottom: 0;
+  right: 0;
+  animation: #e0e59b 4s infinite;
+}
+@keyframes green {
+  50% {
+    bottom: 30px;
+    right: 30px;
+  }
+}
+.blue {
+  background: #16acc9;
+  box-shadow: 0 0 20px 2px #16acc9;
+  bottom: 0;
+  left: 0;
+  animation: #16acc9 4s infinite;
+}
+@keyframes blue {
+  50% {
+    bottom: 30px;
+    left: 30px;
+  }
+}
+
 .main {
   background-color: #eef2f7;
   max-width: 65%;
@@ -76,6 +138,7 @@ input {
   grid-auto-rows: minmax(min-content, max-content);
   padding: 10px;
   gap: 10px;
+  min-height: 55vh;
 }
 
 .card {
@@ -83,6 +146,7 @@ input {
   overflow: hidden;
   cursor: pointer;
   border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 
   :hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
@@ -197,8 +261,4 @@ input {
 .back {
   background-color: #e74c3c;
   box-shadow: 0px 5px 0px 0px #ce3323;
-}
-
-.loader {
-  min-height: 55vh;
 }

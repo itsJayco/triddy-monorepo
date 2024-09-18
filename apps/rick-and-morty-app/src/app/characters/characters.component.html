@@ -10,8 +10,12 @@
     </div>
   </div>
 
-  <div *ngIf="loading" class="loader">
-    Loading...
+  <div *ngIf="loading" class="loader-mask">
+    <div class="loader">
+      <div class="circle red"></div>
+      <div class="circle green"></div>
+      <div class="circle blue"></div>
+    </div>
   </div>
   <div *ngIf="!loading">
     <div class="cards">
