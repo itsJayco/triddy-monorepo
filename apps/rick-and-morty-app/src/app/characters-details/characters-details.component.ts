@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Character, RickAndMortyService } from '../rick-and-morty.service';
+import { CharacterCardComponent } from '@libs/shared-lib';
+
 
 @Component({
   selector: 'app-characters-details',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, CharacterCardComponent],
   templateUrl: './characters-details.component.html',
   styleUrl: './characters-details.component.scss',
   providers: [RickAndMortyService],

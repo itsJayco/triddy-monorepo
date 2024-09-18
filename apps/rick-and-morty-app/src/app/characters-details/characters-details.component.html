@@ -2,39 +2,7 @@
     <div class="head">
         <img src="/header.png" />
     </div>
-    <div class="card" *ngIf="character && !loading">
-        <div class="card-text">
-            <div class="portada">
-                <img [src]="character.image" alt="{{ character.name }}">
-            </div>
-            <div class="title-total">
-                <div class="title">{{ character.species }}</div>
-                <h2>{{ character.name }}</h2>
-                <div class="desc">Meet {{ character.name }}, a {{ character.species }} from {{ character.origin?.name }}
-                    who has been on countless adventures throughout the multiverse. This {{ character.gender }}
-                    character has been featured in {{character.episode.length}} episodes and is currently residing in
-                    the {{character.location.name}}. With a
-                    status of {{character.status}}, {{character.name}} is always ready for the next challenge that comes
-                    their way.</div>
-                <div class="actions">
-                    <button class="button-icons">
-                        <i class="fa-solid fa-person" *ngIf="character.species === 'Human'"> </i>
-                        <i class="fa-solid fa-hand-spock" *ngIf="character.species !== 'Human'"></i>
-                    </button>
-                    <button class="button-icons">
-                        <i class="fa-solid fa-shield-heart" *ngIf="character.status === 'Alive'"></i>
-                        <i class="fa-solid fa-heart-crack" *ngIf="character.status !== 'Alive'"></i>
-                    </button>
-                    <button class="button-icons">
-                        <i class="fa-solid fa-genderless" *ngIf="character.gender === 'Genderless'"></i>
-                        <i class="fa-solid fa-venus" *ngIf="character.gender === 'Female'"></i>
-                        <i class="fa-solid fa-mars" *ngIf="character.gender === 'Male'"></i>
-                        <i class="fa-solid fa-question" *ngIf="character.gender === 'unknown'"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <lib-character-card [character]="character" [loading]="loading" *ngIf="character && !loading"></lib-character-card>
     <button class="button-back" [routerLink]="['/characters']" *ngIf="!loading">Back</button>
     <div *ngIf="loading" class="loader-mask">
         <div class="loader">
