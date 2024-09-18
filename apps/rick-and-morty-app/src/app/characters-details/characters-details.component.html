@@ -1,6 +1,6 @@
 <div class="main">
     <div class="head">
-        <img src="/header.png" />
+        <img src="header.png" />
     </div>
     <lib-character-card class="card" [character]="character" [loading]="loading" *ngIf="character && !loading"></lib-character-card>
     <button class="button-back" [routerLink]="['/characters']" *ngIf="!loading">Back</button>
