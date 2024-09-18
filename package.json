@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build:vercel": "nx run rick-and-morty-app:build:production",
-    "deploy:vercel": "vercel deploy --prod"
+    "start": "nx serve",
+    "build": "nx build",
+    "test": "nx test"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +23,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "vercel": "^37.4.2",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
@@ -50,6 +52,7 @@
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
     "@typescript-eslint/utils": "^7.16.0",
+    "@vercel/remote-nx": "^2.0.0",
     "eslint": "~8.57.0",
     "eslint-config-prettier": "^9.0.0",
     "jest": "^29.7.0",

@@ -59,9 +59,5 @@
     "@nx/angular:component": {
       "style": "css"
     }
-  },
-  "projects": {
-    "rick-and-morty-app": {},
-    "shared-lib": {}
   }
 }

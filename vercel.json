@@ -2,15 +2,17 @@
   "version": 2,
   "builds": [
     {
-      "src": "apps/rick-and-morty-app/index.html",
+      "src": "apps/rick-and-morty-app/package.json",
       "use": "@vercel/static-build",
-      "config": {}
+      "config": {
+        "distDir": "dist/apps/rick-and-morty-app"
+      }
     }
   ],
   "routes": [
     {
-      "src": "/*",
-      "dest": "index.html"
+      "src": "/(.*)",
+      "dest": "/"
     }
   ]
 }
