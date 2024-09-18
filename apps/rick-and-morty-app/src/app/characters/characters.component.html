@@ -1,13 +1,13 @@
 <div class="main">
   <div class="head">
-    <img
-      src="https://occ-0-1190-2774.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABVK-867iNzC3GeSiDQJ7jasFpdN4ySy2Of17S2KxaxbOOtsqax_k_ldd_f5TiDeulU3_lyJmIjtBgPVKLnE1cUK-kRk9yZsO4MXA.png?r=47e" />
+    <img src="/header.png" />
   </div>
   <div class="search">
     <div class="search-box">
       <input [(ngModel)]="searchTerm" (input)="filterCharacters()" placeholder="Search by name">
       <button class="button-search" (click)="filterCharacters()"><i class="fas fa-search"></i></button>
     </div>
+    <span *ngIf="favoriteCount > 0" class="favorite-count">{{ favoriteCount }}</span>
   </div>
 
   <div *ngIf="loading" class="loader-mask">

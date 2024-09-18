@@ -50,4 +50,14 @@ export class RickAndMortyService {
   getCharacterById(id: number): Observable<Character> {
     return this.http.get<Character>(`${this.apiUrl}/${id}`);
   }
+
+  // New method to get characters filtered by name
+  getCharactersByName(name: string): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(`${this.apiUrl}?name=${name}`);
+  }
+
+  // Method to get characters filtered by name and page
+  getCharactersByNameAndPage(name: string, page: number): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(`${this.apiUrl}?name=${name}&page=${page}`);
+  }
 }

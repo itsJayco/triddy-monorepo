@@ -19,6 +19,7 @@ export class CharactersComponent implements OnInit {
   loading: boolean = false;
   searchTerm: string = '';
   favorites: Set<number> = new Set<number>();
+  favoriteCount: number = 0;
 
   constructor(private rickAndMortyService: RickAndMortyService) {}
 
@@ -27,40 +28,65 @@ export class CharactersComponent implements OnInit {
     this.loadFavorites();
   }
 
-  loadCharacters(page: number = 1): void {
+  loadCharacters(page: number = 1, searchTerm: string = ''): void {
     this.loading = true;
-    this.rickAndMortyService.getCharacters(page).subscribe({
-      next: (data) => {
-        this.characters = data.results;
-        this.totalPages = data.info.pages;
-        this.filteredCharacters = this.characters;
-        this.loading = false;
-      },
-      error: (err) => {
-        console.error('Error fetching characters', err);
-        this.loading = false;
-      },
-    });
+    if (searchTerm.trim() !== '') {
+      // Fetch filtered characters by name and page
+      this.rickAndMortyService
+        .getCharactersByNameAndPage(searchTerm, page)
+        .subscribe({
+          next: (data) => {
+            this.characters = data.results;
+            this.totalPages = data.info.pages;
+            this.filteredCharacters = this.characters;
+            this.loading = false;
+          },
+          error: (err) => {
+            console.error('Error fetching characters', err);
+            this.filteredCharacters = [];
+            this.loading = false;
+          },
+        });
+    } else {
+      // Fetch characters for a specific page (no filtering)
+      this.rickAndMortyService.getCharacters(page).subscribe({
+        next: (data) => {
+          this.characters = data.results;
+          this.totalPages = data.info.pages;
+          this.filteredCharacters = this.characters;
+          this.loading = false;
+        },
+        error: (err) => {
+          console.error('Error fetching characters', err);
+          this.filteredCharacters = [];
+          this.loading = false;
+        },
+      });
+    }
   }
 
   nextPage(): void {
     if (this.page < this.totalPages) {
       this.page++;
-      this.loadCharacters(this.page);
+      this.loadCharacters(this.page, this.searchTerm);
     }
   }
 
   prevPage(): void {
     if (this.page > 1) {
       this.page--;
-      this.loadCharacters(this.page);
+      this.loadCharacters(this.page, this.searchTerm);
     }
   }
 
   filterCharacters(): void {
-    this.filteredCharacters = this.characters.filter((character) =>
-      character.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+    if (this.searchTerm.trim() === '') {
+      this.page = 1;
+      this.loadCharacters(this.page);
+    } else {
+      this.page = 1;
+      this.loadCharacters(this.page, this.searchTerm);
+    }
   }
 
   toggleFavorite(event: Event, character: Character): void {
@@ -70,7 +96,12 @@ export class CharactersComponent implements OnInit {
     } else {
       this.favorites.add(character.id);
     }
+    this.updateFavoriteCount();
     this.saveFavorites();
+  }
+
+  updateFavoriteCount(): void {
+    this.favoriteCount = this.favorites.size;
   }
 
   isFavorite(character: Character): boolean {
@@ -88,6 +119,7 @@ export class CharactersComponent implements OnInit {
     const favorites = localStorage.getItem('favorites');
     if (favorites) {
       this.favorites = new Set<number>(JSON.parse(favorites));
+      this.updateFavoriteCount();  // Update the favorite count when loading from localStorage
     }
   }
 }

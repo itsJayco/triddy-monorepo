@@ -9,9 +9,11 @@ import { Character, RickAndMortyService } from '../rick-and-morty.service';
   imports: [CommonModule, RouterModule],
   templateUrl: './characters-details.component.html',
   styleUrl: './characters-details.component.scss',
+  providers: [RickAndMortyService],
 })
 export class CharactersDetailsComponent implements OnInit {
   character!: Character;
+  loading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,9 +24,14 @@ export class CharactersDetailsComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.rickAndMortyService.getCharacterById(+id).subscribe({
-        next: (character: Character) => (this.character = character),
-        error: (error: unknown) =>
-          console.error('Error loading character details:', error),
+        next: (character: Character) => {
+          this.character = character;
+          this.loading = false;
+        },
+        error: (error: unknown) => {
+          console.error('Error loading character details:', error);
+          this.loading = false;
+        },
       });
     }
   }
