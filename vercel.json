@@ -1,7 +1,6 @@
 {
   "buildCommand": "nx build rick-and-morty-app --prod",
   "outputDirectory": "dist/apps/rick-and-morty-app",
-  "outputPath": "dist/apps/rick-and-morty-app",
   "routes": [
     { "handle": "filesystem" },
     { "src": "/assets/(.*)", "dest": "/assets/$1" },

@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "nx build rick-and-morty-app --prod"
+    "build": "nx build rick-and-morty-app --prod",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist/apps/rick-and-morty-app/browser"
   },
   "private": true,
   "dependencies": {
@@ -53,6 +55,7 @@
     "@vercel/remote-nx": "^2.0.0",
     "eslint": "~8.57.0",
     "eslint-config-prettier": "^9.0.0",
+    "gh-pages": "^6.1.1",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-preset-angular": "~14.1.0",
