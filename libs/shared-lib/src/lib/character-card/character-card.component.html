@@ -9,18 +9,18 @@
             <div class="desc">{{ formatCharacterText() }}</div>
             <div class="actions" *ngIf="character">
                 <button class="button-icons">
-                    <i class="fa-solid fa-person" *ngIf="character?.species === 'Human'"> </i>
-                    <i class="fa-solid fa-hand-spock" *ngIf="character?.species !== 'Human'"> </i>
+                    <fa-icon [icon]="faPerson" *ngIf="character?.species === 'Human'"></fa-icon>
+                    <fa-icon [icon]="faHandSpock" *ngIf="character?.species !== 'Human'"></fa-icon>
                 </button>
                 <button class="button-icons">
-                    <i class="fa-solid fa-shield-heart" *ngIf="character?.status === 'Alive'"> </i>
-                    <i class="fa-solid fa-heart-crack" *ngIf="character?.status !== 'Alive'"> </i>
+                    <fa-icon [icon]="faShieldHeart" *ngIf="character?.status === 'Alive'"></fa-icon>
+                    <fa-icon [icon]="faHeartCrack" *ngIf="character?.status !== 'Alive'"></fa-icon>
                 </button>
                 <button class="button-icons">
-                    <i class="fa-solid fa-genderless" *ngIf="character?.gender === 'Genderless'"> </i>
-                    <i class="fa-solid fa-venus" *ngIf="character?.gender === 'Female'"> </i>
-                    <i class="fa-solid fa-mars" *ngIf="character?.gender === 'Male'"> </i>
-                    <i class="fa-solid fa-question" *ngIf="character?.gender === 'unknown'"> </i>
+                    <fa-icon [icon]="faGenderless" *ngIf="character?.gender === 'Genderless'"></fa-icon>
+                    <fa-icon [icon]="faVenus" *ngIf="character?.gender === 'Female'"></fa-icon>
+                    <fa-icon [icon]="faMars" *ngIf="character?.gender === 'Male'"></fa-icon>
+                    <fa-icon [icon]="faQuestion" *ngIf="character?.gender === 'unknown'"></fa-icon>
                 </button>
             </div>
         </div>

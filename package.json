@@ -2,7 +2,10 @@
   "name": "@triddy-monorepo/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build:vercel": "nx run rick-and-morty-app:build:production",
+    "deploy:vercel": "vercel deploy --prod"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~18.2.0",
@@ -13,7 +16,10 @@
     "@angular/platform-browser": "~18.2.0",
     "@angular/platform-browser-dynamic": "~18.2.0",
     "@angular/router": "~18.2.0",
-    "@fortawesome/fontawesome-free": "^6.6.0",
+    "@fortawesome/angular-fontawesome": "^0.15.0",
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-regular-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

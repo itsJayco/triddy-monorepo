@@ -5,9 +5,11 @@
   <div class="search">
     <div class="search-box">
       <input [(ngModel)]="searchTerm" (input)="filterCharacters()" placeholder="Search by name">
-      <button class="button-search" (click)="filterCharacters()"><i class="fas fa-search"></i></button>
+      <button class="button-search" (click)="filterCharacters()"><fa-icon [icon]="faSearch"></fa-icon></button>
     </div>
-    <span *ngIf="favoriteCount > 0" class="favorite-count">{{ favoriteCount }}</span>
+    <span *ngIf="favoriteCount > 0" class="favorite-count">
+      <fa-icon [icon]="faSolidHeart"></fa-icon>{{ favoriteCount }}
+    </span>
   </div>
 
   <div *ngIf="loading" class="loader-mask">
@@ -26,8 +28,7 @@
             <h3>{{ character.name }}</h3>
             <p>{{ character.species }}</p>
             <button (click)="toggleFavorite($event, character)" class="favorite-btn">
-              <i [class.fa-solid]="isFavorite(character)" [class.fa-regular]="!isFavorite(character)"
-                class="fa-heart"></i>
+              <fa-icon [icon]="isFavorite(character) ? faSolidHeart : faRegularHeart"></fa-icon>
             </button>
           </div>
         </div>

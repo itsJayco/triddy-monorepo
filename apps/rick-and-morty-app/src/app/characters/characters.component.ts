@@ -3,13 +3,16 @@ import { RickAndMortyService, Character } from '../rick-and-morty.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faHeart as faSolidHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faRegularHeart } from '@fortawesome/free-regular-svg-icons';
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, FontAwesomeModule],
 })
 export class CharactersComponent implements OnInit {
   characters: Character[] = [];
@@ -20,6 +23,9 @@ export class CharactersComponent implements OnInit {
   searchTerm: string = '';
   favorites: Set<number> = new Set<number>();
   favoriteCount: number = 0;
+  faSearch = faSearch;
+  faSolidHeart = faSolidHeart;
+  faRegularHeart = faRegularHeart;
 
   constructor(private rickAndMortyService: RickAndMortyService) {}
 
@@ -119,7 +125,7 @@ export class CharactersComponent implements OnInit {
     const favorites = localStorage.getItem('favorites');
     if (favorites) {
       this.favorites = new Set<number>(JSON.parse(favorites));
-      this.updateFavoriteCount();  // Update the favorite count when loading from localStorage
+      this.updateFavoriteCount(); // Update the favorite count when loading from localStorage
     }
   }
 }
