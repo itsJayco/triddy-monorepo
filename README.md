@@ -1,82 +1,145 @@
-# TriddyMonorepo
+# Triddy Monorepo
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+Este es un monorepo creado con Nx para gestionar múltiples aplicaciones y librerías, incluyendo una aplicación Angular basada en la API de Rick and Morty.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+## Estructura del proyecto
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+El monorepo sigue la estructura recomendada por Nx para organizar aplicaciones y bibliotecas reutilizables:
 
-## Finish your CI setup
-
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/3cQhw9XaJa)
-
-
-## Run tasks
-
-To run the dev server for your app, use:
-
-```sh
-npx nx serve rick-and-morty-app
+```
+└── 📁triddy-monorepo
+    [...]
+    └── 📁apps
+        └── 📁rick-and-morty-app
+            └── 📁public
+                └── favicon.ico
+                └── header.png
+            └── 📁src
+                └── 📁app
+                    └── 📁characters
+                        └── characters.component.html
+                        └── characters.component.scss
+                        └── characters.component.spec.ts
+                        └── characters.component.ts
+                    └── 📁characters-details
+                        └── characters-details.component.html
+                        └── characters-details.component.scss
+                        └── characters-details.component.spec.ts
+                        └── characters-details.component.ts
+                    └── app.component.html
+                    └── app.component.scss
+                    └── app.component.spec.ts
+                    └── app.component.ts
+                    └── app.config.ts
+                    └── app.routes.ts
+                    └── nx-welcome.component.ts
+                    └── rick-and-morty.service.spec.ts
+                    └── rick-and-morty.service.ts
+                └── 📁environments
+                    └── environment.prod.ts
+                    └── environment.ts
+                └── index.html
+                └── main.ts
+                └── styles.scss
+                └── test-setup.ts
+            └── .eslintrc.json
+            └── jest.config.ts
+            └── project.json
+            └── tsconfig.app.json
+            └── tsconfig.editor.json
+            └── tsconfig.json
+            └── tsconfig.spec.json
+    └── 📁libs
+        └── 📁shared-lib
+            └── 📁src
+                └── 📁lib
+                    └── 📁character-card
+                        └── character-card.component.html
+                        └── character-card.component.scss
+                        └── character-card.component.spec.ts
+                        └── character-card.component.ts
+                    └── 📁models
+                        └── character.model.ts
+                    └── 📁shared-lib
+                        └── shared-lib.component.css
+                        └── shared-lib.component.html
+                        └── shared-lib.component.spec.ts
+                        └── shared-lib.component.ts
+                └── index.ts
+                └── test-setup.ts
+            └── .eslintrc.json
+            └── jest.config.ts
+            └── ng-package.json
+            └── project.json
+            └── README.md
+            └── tsconfig.json
+            └── tsconfig.lib.json
+            └── tsconfig.spec.json
+    └── .editorconfig
+    └── .eslintignore
+    └── .eslintrc.json
+    └── .gitignore
+    └── .prettierignore
+    └── .prettierrc
+    └── jest.config.ts
+    └── jest.preset.js
+    └── nx.json
+    └── package-lock.json
+    └── package.json
+    └── README.md
+    └── tsconfig.base.json
+    └── vercel.json
 ```
 
-To create a production bundle:
+## Tecnologías utilizadas
 
-```sh
-npx nx build rick-and-morty-app
+- **Angular**: Framework de desarrollo frontend para construir aplicaciones SPA.
+- **Nx**: Herramienta de monorepos para organizar aplicaciones y bibliotecas reutilizables.
+- **TypeScript**: Superset de JavaScript para tipado estático.
+- **SCSS**: Preprocesador CSS para escribir estilos de manera modular.
+- **Jest**: Framework de testing utilizado para realizar pruebas unitarias.
+
+## Configuración y uso
+
+### Requisitos previos
+
+- Node.js v16+
+- npm v7+
+- Nx CLI instalado globalmente
+
+```bash
+npm install -g nx
 ```
 
-To see all available targets to run for a project, run:
+### Requisitos previos
 
-```sh
-npx nx show project rick-and-morty-app
-```
-        
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+    - Clona este repositorio en tu máquina local:
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
-```sh
-npx nx g @nx/angular:app demo
+```bash
+git clone https://github.com/usuario/triddy-monorepo.git
 ```
 
-To generate a new library, use:
+    - Navega al directorio del proyecto y ejecuta la instalación de dependencias:
 
-```sh
-npx nx g @nx/angular:lib mylib
+```bash
+cd triddy-monorepo
+npm install
 ```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+### Ejecutar el proyecto
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Para levantar la aplicación de Rick and Morty en un servidor de desarrollo:
 
+```bash
+nx serve rick-and-morty-app
+```
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+La aplicación estará disponible en http://localhost:4200.
 
-## Install Nx Console
+### Compilar el proyecto
+Para compilar la aplicación para producción:
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+```bash
+nx build rick-and-morty-app --prod
+```
+Los archivos compilados estarán en dist/apps/rick-and-morty-app/browser
