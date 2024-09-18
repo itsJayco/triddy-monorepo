@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule]
+  imports: [CommonModule, FormsModule, RouterModule],
 })
 export class CharactersComponent implements OnInit {
   characters: Character[] = [];
@@ -39,7 +39,7 @@ export class CharactersComponent implements OnInit {
       error: (err) => {
         console.error('Error fetching characters', err);
         this.loading = false;
-      }
+      },
     });
   }
 
@@ -58,12 +58,13 @@ export class CharactersComponent implements OnInit {
   }
 
   filterCharacters(): void {
-    this.filteredCharacters = this.characters.filter(character =>
+    this.filteredCharacters = this.characters.filter((character) =>
       character.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
 
-  toggleFavorite(character: Character): void {
+  toggleFavorite(event: Event, character: Character): void {
+    event.stopPropagation();
     if (this.favorites.has(character.id)) {
       this.favorites.delete(character.id);
     } else {
@@ -77,7 +78,10 @@ export class CharactersComponent implements OnInit {
   }
 
   saveFavorites(): void {
-    localStorage.setItem('favorites', JSON.stringify(Array.from(this.favorites)));
+    localStorage.setItem(
+      'favorites',
+      JSON.stringify(Array.from(this.favorites))
+    );
   }
 
   loadFavorites(): void {

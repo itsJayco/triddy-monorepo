@@ -1,18 +1,40 @@
-<div>
-  <input [(ngModel)]="searchTerm" (input)="filterCharacters()" placeholder="Search by name">
-</div>
-
-<div *ngIf="loading">Loading...</div>
-<div *ngIf="!loading">
-  <div *ngFor="let character of filteredCharacters">
-    <h3>{{ character.name }}</h3>
-    <img [src]="character.image" [alt]="character.name" width="100">
-    <p>Species: {{ character.species }}</p>
-    <button (click)="toggleFavorite(character)">
-      {{ isFavorite(character) ? 'Unfavorite' : 'Favorite' }}
-    </button>
-    <a [routerLink]="['/characters', character.id]">View Details</a>
+<div class="main">
+  <div class="head">
+    <img
+      src="https://occ-0-1190-2774.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABVK-867iNzC3GeSiDQJ7jasFpdN4ySy2Of17S2KxaxbOOtsqax_k_ldd_f5TiDeulU3_lyJmIjtBgPVKLnE1cUK-kRk9yZsO4MXA.png?r=47e" />
   </div>
-  <button (click)="prevPage()" [disabled]="page === 1">Previous</button>
-  <button (click)="nextPage()" [disabled]="page === totalPages">Next</button>
+  <div class="search">
+    <div class="search-box">
+      <input [(ngModel)]="searchTerm" (input)="filterCharacters()" placeholder="Search by name">
+      <button class="button-search" (click)="filterCharacters()"><i class="fas fa-search"></i></button>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loader">
+    Loading...
+  </div>
+  <div *ngIf="!loading">
+    <div class="cards">
+      <div *ngFor="let character of filteredCharacters" class="card" [routerLink]="['/characters', character.id]">
+        <div class="card-content">
+          <img [src]="character.image" [alt]="character.name">
+          <div class="card-info">
+            <h3>{{ character.name }}</h3>
+            <p>{{ character.species }}</p>
+            <button (click)="toggleFavorite($event, character)" class="favorite-btn">
+              <i [class.fa-solid]="isFavorite(character)" [class.fa-regular]="!isFavorite(character)"
+                class="fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="buttons-box">
+    <button class="button back" *ngIf="page !== 1" (click)="prevPage()" [disabled]="page === 1">Back</button>
+    <button class="button next" *ngIf="page !== totalPages" (click)="nextPage()"
+      [disabled]="page === totalPages">Next</button>
+  </div>
+
 </div>

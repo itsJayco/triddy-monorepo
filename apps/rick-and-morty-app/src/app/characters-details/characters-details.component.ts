@@ -8,7 +8,7 @@ import { Character, RickAndMortyService } from '../rick-and-morty.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './characters-details.component.html',
-  styleUrl: './characters-details.component.css',
+  styleUrl: './characters-details.component.scss',
 })
 export class CharactersDetailsComponent implements OnInit {
   character!: Character;
