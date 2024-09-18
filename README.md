@@ -113,13 +113,13 @@ npm install -g nx
 
 ### Requisitos previos
 
-    - Clona este repositorio en tu máquina local:
+Clona este repositorio en tu máquina local:
 
 ```bash
 git clone https://github.com/usuario/triddy-monorepo.git
 ```
 
-    - Navega al directorio del proyecto y ejecuta la instalación de dependencias:
+Navega al directorio del proyecto y ejecuta la instalación de dependencias:
 
 ```bash
 cd triddy-monorepo
