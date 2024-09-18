@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "build": "nx build rick-and-morty-app --prod",
-    "start": "nx serve rick-and-morty-app"
+    "start": "nx serve rick-and-morty-app",
+    "deploy:vercel": "vercel build && vercel deploy --prod"
   },
   "private": true,
   "dependencies": {
