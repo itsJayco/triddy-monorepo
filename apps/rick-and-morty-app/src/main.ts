@@ -3,18 +3,22 @@ import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
-import { environment } from './environments/environment';
+import { BaseHrefService } from './app/base-href.service';
 
-window.__env = {
-  baseHref: environment.baseHref
-};
-
-window.__env = window.__env || {};
-window.__env.baseHref = environment.baseHref || '/';
+function initBaseHref(baseHrefService: BaseHrefService) {
+  return () => baseHrefService.setBaseHref();
+}
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
-    provideHttpClient()
+    provideHttpClient(),
+    BaseHrefService,
+    {
+      provide: 'APP_INITIALIZER',
+      useFactory: initBaseHref,
+      deps: [BaseHrefService],
+      multi: true
+    },
   ]
 });

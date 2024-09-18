@@ -5,6 +5,6 @@ import { CharactersDetailsComponent } from './characters-details/characters-deta
 export const routes: Routes = [
   { path: 'characters', component: CharactersComponent },
   { path: 'characters/:id', component: CharactersDetailsComponent },
-  { path: '', redirectTo: '/characters', pathMatch: 'full' },
-  { path: '**', redirectTo: '/characters' }
+  { path: '', redirectTo: 'characters', pathMatch: 'full' },
+  { path: '**', redirectTo: 'characters' }
 ];
