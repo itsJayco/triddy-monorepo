@@ -117,22 +117,6 @@ path {
   }
 }
 
-@media only screen and (min-width: 412px) and (max-height: 915px) {
-  .card-text {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .card {
-    max-width: none;
-    width: auto;
-  }
-
-  .portada img {
-    border-radius: 20px;
-  }
-}
-
 @media only screen and (min-width: 344px) and (max-height: 882px) {
   .card-text {
     display: flex;
@@ -149,7 +133,7 @@ path {
   }
 }
 
-@media only screen and (min-width: 430px) and (max-height: 932px) {
+@media only screen and (min-width: 412px) and (max-height: 915px) {
   .card-text {
     display: flex;
     flex-direction: column;
