@@ -18,22 +18,19 @@ export class BaseHrefService {
 
   calculateBaseHref(): string {
     const currentOrigin = window.location.origin;
-
-    // Check for local environment
     const isLocalhost =
       currentOrigin.includes('localhost') ||
       currentOrigin.includes('127.0.0.1');
 
     if (isLocalhost) {
-      return '/'; // Change this to your local base path if needed
+      return '/';
     }
 
-    // Check if the current origin matches the GitHub Pages URL
     const expectedOrigin = 'https://itsjayco.github.io';
     if (currentOrigin === expectedOrigin) {
       return '/triddy-monorepo/';
     }
 
-    return '/'; // Default base href for other origins
+    return '/';
   }
 }

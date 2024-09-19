@@ -1,0 +1,113 @@
+* {
+  font-family: Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+
+.container,
+.main {
+  margin: 0;
+  padding: 0;
+  background-color: #03090f;
+  height: 100%;
+  overflow: hidden;
+}
+
+.background-img {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 4;
+  width: fit-content;
+
+  span {
+    position: relative;
+    color: #fff;
+    font-weight: 900;
+    font-size: 20.4em;
+    display: block;
+    width: fit-content;
+    height: max-content;
+
+    &:before {
+      content: '';
+      background-image: url('https://staticdelivery.nexusmods.com/mods/1151/images/528-0-1447526230.png');
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      animation: rotateIn 0.5s ease-out;
+    }
+  }
+
+  p {
+    text-align: center;
+    font-weight: 400;
+    color: #fff;
+    margin-top: 0;
+    line-height: 22px;
+  }
+
+  button {
+    border: none;
+    color: #fff;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: 900;
+    outline: none;
+    appearance: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 22px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #f96e4d;
+    box-shadow: 0px 5px 0px 0px #cc5b3e;
+    min-width: 12.5%;
+    transition: none;
+  }
+}
+
+.space {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-size: 240px;
+  background-color: #03090f;
+  animation: spin 240s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    transform: rotate(0deg) scale(0.2);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(360deg) scale(1);
+    opacity: 1;
+  }
+}
