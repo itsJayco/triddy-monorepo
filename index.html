@@ -3,11 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title>Rick and Morty</title>
-    <base>
+    <base id="dynamicBase">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script>
+      (function() {
+        var baseElement = document.getElementById('dynamicBase');
+        if (baseElement) {
+          var currentOrigin = window.location.origin;
+          var baseHref = '/';
+          if (currentOrigin.includes('localhost') || currentOrigin.includes('127.0.0.1')) {
+            baseHref = '/';
+          } else if (currentOrigin === 'https://itsjayco.github.io') {
+            baseHref = '/triddy-monorepo/';
+          }
+          baseElement.setAttribute('href', baseHref);
+          console.log('Base href set to:', baseHref);
+        }
+      })();
+    </script>
   <style>body{background-color:#eef2f7;margin:0}</style><link rel="stylesheet" href="styles-7U5XE355.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-7U5XE355.css"></noscript></head>
   <body>
     <app-root></app-root>
-  <script src="polyfills-SCHOHYNV.js" type="module"></script><script src="main-JHFY4IBL.js" type="module"></script></body>
+  <script src="polyfills-SCHOHYNV.js" type="module"></script><script src="main-7RT5BE7T.js" type="module"></script></body>
 </html>
