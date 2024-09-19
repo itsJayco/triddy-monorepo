@@ -8,11 +8,13 @@ export class BaseHrefService {
   constructor(@Inject(DOCUMENT) private document: Document) {}
 
   setBaseHref(): void {
-    const baseElement = this.document.querySelector('base');
+    // Select the base element by the new id
+    const baseElement = this.document.querySelector('#dynamicBase');
+
     if (baseElement) {
       const baseHref = this.calculateBaseHref();
       baseElement.setAttribute('href', baseHref);
-      console.log('Base href set to:', baseHref); // For debugging
+      console.log('Base href set to:', baseHref);
     }
   }
 

@@ -3,9 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <title>Rick and Morty</title>
-    <base />
+    <base id="dynamicBase" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <script>
+      (function() {
+        var baseElement = document.getElementById('dynamicBase');
+        if (baseElement) {
+          var currentOrigin = window.location.origin;
+          var baseHref = '/';
+          if (currentOrigin.includes('localhost') || currentOrigin.includes('127.0.0.1')) {
+            baseHref = '/';
+          } else if (currentOrigin === 'https://itsjayco.github.io') {
+            baseHref = '/triddy-monorepo/';
+          }
+          baseElement.setAttribute('href', baseHref);
+          console.log('Base href set to:', baseHref);
+        }
+      })();
+    </script>
   </head>
   <body>
     <app-root></app-root>
